@@ -1,0 +1,15 @@
+include(default)
+[settings]
+arch=armv7
+build_type=Release
+compiler=clang
+compiler.libcxx=c++_shared
+compiler.version=14
+os=Android
+os.api_level=24
+[tool_requires]
+android-ndk/r25
+[options]
+ffmpeg/*:with_asm=False
+ffmpeg/*:shared=True
+qt*/*:opengl=es2

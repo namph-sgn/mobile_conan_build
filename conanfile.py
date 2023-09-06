@@ -44,13 +44,7 @@ class OryzaPluginConan(ConanFile):
     generators = "cmake_find_package", "virtualrunenv"
 
     requires = (
-        "zlib/1.2.12",
-        "libpng/1.6.40",
-        "openssl/1.1.1q",
-        "freetype/2.12.1",
-        "ffmpeg/4.4",
-        "qt/5.15.2",
-        "boost/1.78.0"
+        "opencv/4.5.5"
     )
 
     def generate(self):
@@ -71,17 +65,17 @@ class OryzaPluginConan(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["boost", "qt", "ffmpeg"]
+        self.cpp_info.libs = ["opencv"]
 
     def requirements(self):
-        if self.isLinux or self.isWindows or self.isAndroid:
-            self.requires("openal-soft/1.19.1")
+        # if self.isLinux or self.isWindows or self.isAndroid:
+        #     self.requires("openal-soft/1.19.1")
+        pass
 
 
     def imports(self):
         copy_packages = [
-            "ffmpeg",
-            "openal"
+            "opencv"
         ]
         self._copy_packages(copy_packages)
 
